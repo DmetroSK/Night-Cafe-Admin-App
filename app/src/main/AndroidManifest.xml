@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.nightcafeadmin.app">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Night Cafe Admin"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.NightCafe">
+        <activity android:name=".fooditems.AddItemsActivity"></activity>
+        <activity android:name=".fooditems.FoodItemsActivity" />
+        <activity
+            android:name=".authentication.UpdateSuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".authentication.UpdatePhoneActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".authentication.ChangedPhoneActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".authentication.OtpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".authentication.SignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".authentication.SignInActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

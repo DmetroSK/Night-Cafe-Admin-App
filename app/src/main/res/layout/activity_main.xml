@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/topbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/txtname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"/>
+    </RelativeLayout>
+
+
+    <!--    Start of the Stat bar-->
+
+    <LinearLayout
+        android:id="@+id/statbar"
+        android:layout_below="@+id/topbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp">
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:elevation="4dp"
+                android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/order_card_bg">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="35sp"
+                    android:layout_centerInParent="true"
+                    android:text="0"/>
+
+            </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Orders"/>
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:elevation="4dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/pending_card_bg">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="35sp"
+                    android:layout_centerInParent="true"
+                    android:text="0"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:text="Pending"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:elevation="4dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/deliverd_card_bg">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="35sp"
+                    android:layout_centerInParent="true"
+                    android:text="0"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:text="Delivered"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/canceled_card_bg">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="35sp"
+                    android:layout_centerInParent="true"
+                    android:text="0"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:text="Canceled"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!--    End of the Stat bar-->
+
+<!--    Start of the menu items-->
+
+    <LinearLayout
+        android:id="@+id/mainmenubar"
+        android:layout_below="@id/statbar"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp">
+
+       <LinearLayout
+           android:id="@+id/order_group"
+           android:layout_width="match_parent"
+           android:layout_height="90dp"
+           android:gravity="center"
+           android:orientation="horizontal"
+           android:background="@drawable/menu_cards_bg">
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content">
+
+               <ImageView
+                   android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:src="@drawable/ic_baseline_orders"/>
+
+               <TextView
+                   android:layout_marginLeft="10dp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_vertical"
+                   android:text="View Orders"
+                   android:textSize="25sp"
+                   android:textStyle="bold"
+                   android:textColor="@color/white"/>
+
+           </LinearLayout>
+
+       </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/food_group"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:background="@drawable/menu_cards_bg">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_baseline_fooditems"/>
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Food Items"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/customer_group"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:gravity="center"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:background="@drawable/menu_cards_bg">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_baseline_customers"/>
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Customers"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        </LinearLayout>
+
+    <!--    End of the menu items-->
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_below="@id/mainmenubar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/order_card_bg"
+        android:textColor="@color/white"
+        android:text="Sign Out"/>
+
+</RelativeLayout>

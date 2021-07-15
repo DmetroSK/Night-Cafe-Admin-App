@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".authentication.UpdateSuccessActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:text="Phone Number\n Updated"/>
+
+    <ImageView
+        android:id="@+id/imgChecked"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_baseline_checked"
+        app:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_below="@id/imgChecked"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:text="Your phone number updated\n Please Sign In"/>
+
+    <Button
+        android:id="@+id/signin"
+        android:layout_below="@id/title2"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:text="Sign In"/>
+
+</RelativeLayout>

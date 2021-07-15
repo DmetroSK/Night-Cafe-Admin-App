@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".authentication.OtpActivity">
+
+
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="18dp"
+        android:src="@drawable/ic_back_arrow"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_below="@id/arrow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:text="Verification"/>
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_below="@id/title"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textAlignment="center"
+        android:text="Enter the OTP code we sent"/>
+
+    <com.chaos.view.PinView
+        android:id="@+id/pinview"
+        style="@style/PinWidget.PinView"
+        android:layout_below="@id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:itemHeight="40dp"
+        app:itemWidth="40dp"
+        app:itemCount="6"
+        android:layout_marginBottom="18dp"
+        android:layout_centerHorizontal="true"
+        android:inputType="number"
+        android:cursorVisible="true"
+        app:cursorColor="@color/black"
+        app:hideLineWhenFilled="true"
+        app:itemRadius="5dp"/>
+
+
+    <TextView
+        android:id="@+id/subtitle2"
+        android:layout_below="@id/pinview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_marginLeft="35dp"
+        android:text="Didn't receive OTP code?"/>
+
+    <TextView
+        android:id="@+id/resend"
+        android:layout_below="@id/pinview"
+        android:layout_toEndOf="@id/subtitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:text=" Resend"/>
+
+    <TextView
+        android:id="@+id/counter"
+        android:layout_below="@id/pinview"
+        android:layout_toEndOf="@id/resend"
+        android:layout_alignRight="@id/submit"
+        android:textAlignment="textEnd"
+        android:layout_marginRight="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:text=" 00:00"/>
+
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_below="@id/subtitle2"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_height="60dp"
+        android:textColor="@color/white"
+        android:text="Verify Code"/>
+
+
+</RelativeLayout>

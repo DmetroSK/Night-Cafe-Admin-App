@@ -1,0 +1,2 @@
+rootProject.name = "NightCafeAdmin"
+include ':app'

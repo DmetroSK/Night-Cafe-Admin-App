@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".authentication.SignInActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/ic_main_logo_black"/>
+    <TextView
+        android:id="@+id/logo_text"
+        android:layout_below="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Night Cafe Admin"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textColor="@color/black"/>
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phone"
+        android:layout_below="@id/logo_text"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/ic_outline_phone"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/black"
+        android:hint="Phone Number">
+
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:maxLength="10"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <TextView
+        android:id="@+id/changeNum"
+        android:layout_below="@id/phone"
+        android:layout_marginTop="20dp"
+        android:layout_alignEnd="@id/phone"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textAlignment="viewEnd"
+        android:text="Can't Sign IN ?"/>
+
+    <Button
+        android:id="@+id/signin"
+        android:layout_below="@id/changeNum"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColor="@color/white"
+        android:text="Sign In"/>
+
+
+    <LinearLayout
+        android:id="@+id/bottomtext"
+        android:layout_below="@id/signin"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/subtitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="You don't have an admin account?"/>
+
+        <TextView
+            android:id="@+id/signup"
+            android:layout_toEndOf="@id/subtitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:text=" Sign Up"/>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/bottomtext"
+        android:layout_centerHorizontal="true">
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

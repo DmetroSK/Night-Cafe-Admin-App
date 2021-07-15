@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fooditems.FoodItemsActivity">
+
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="18dp"
+        android:src="@drawable/ic_back_arrow"/>
+
+
+    <LinearLayout
+        android:id="@+id/add_item_group"
+        android:layout_below="@id/arrow"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@drawable/menu_cards_bg">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_add"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Add Items"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fooditemrv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+       android:layout_below="@id/add_item_group" />
+
+
+</RelativeLayout>

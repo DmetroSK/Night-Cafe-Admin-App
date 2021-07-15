@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "67986715460",
+    "firebase_url": "https://night-cafe-app-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "night-cafe-app",
+    "storage_bucket": "night-cafe-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67986715460:android:92fca2c6fa50d524845d11",
+        "android_client_info": {
+          "package_name": "com.nightcafe.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67986715460-2cj6ighoqm1urm5mdk3g5vneh0i4747n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nightcafe.app",
+            "certificate_hash": "004c02f05ab601665c02a1f64922e2afb26da9e8"
+          }
+        },
+        {
+          "client_id": "67986715460-msehcgg3gngnl5u5rv4min20aud33i3l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBL5dgr-16E9cWh4VpnRnlnV5YSApMDPTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67986715460-msehcgg3gngnl5u5rv4min20aud33i3l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67986715460:android:ce9ba909617f83f6845d11",
+        "android_client_info": {
+          "package_name": "com.nightcafeadmin.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67986715460-msehcgg3gngnl5u5rv4min20aud33i3l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBL5dgr-16E9cWh4VpnRnlnV5YSApMDPTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67986715460-msehcgg3gngnl5u5rv4min20aud33i3l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
