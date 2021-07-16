@@ -2,7 +2,6 @@ package com.nightcafeadmin.app.fooditems;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -17,7 +16,6 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -28,8 +26,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.nightcafeadmin.app.R;
-import com.nightcafeadmin.app.authentication.SignInActivity;
-import com.nightcafeadmin.app.authentication.SignUpActivity;
+
 
 import java.io.IOException;
 
@@ -149,7 +146,7 @@ public class AddItemsActivity extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Uri> task) {
                                             String imageURL = task.getResult().toString();
                                             String ImageUploadId = databaseReference.push().getKey();
-                                            UploadItem itemInfo = new UploadItem(imageURL,item_name,category_name,regular_price,large_price);
+                                            UploadItem itemInfo = new UploadItem(imageURL,item_name,category_name,regular_price,large_price,"Available");
                                             databaseReference.child(ImageUploadId).setValue(itemInfo);
                                             Toast.makeText(getApplicationContext(), "Item Added Successfully ", Toast.LENGTH_LONG).show();
                                             probar.setVisibility(View.GONE);

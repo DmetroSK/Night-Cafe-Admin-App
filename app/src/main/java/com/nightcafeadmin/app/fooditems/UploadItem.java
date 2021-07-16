@@ -7,14 +7,16 @@ public class UploadItem {
     public String category;
     public String regular;
     public String large;
+    public String status;
 
-    public UploadItem(String url, String name,String category,String regular,String large) {
+    public UploadItem(String url, String name,String category,String regular,String large,String status) {
 
         this.image = url;
         this.name = name;
         this.category = category;
         this.regular = regular;
         this.large = large;
+        this.status = status;
 
     }
 
@@ -37,4 +39,6 @@ public class UploadItem {
     public String getLarge() {
         return large;
     }
+
+    public String getStatus() {return status;}
 }

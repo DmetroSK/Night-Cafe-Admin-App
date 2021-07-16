@@ -7,17 +7,20 @@ public class ItemModel {
     public String category;
     public String regular;
     public String large;
+    public String status;
+
 
     ItemModel(){
 
     }
 
-    public ItemModel(String image, String name, String category, String regular, String large) {
+    public ItemModel(String image, String name, String category, String regular, String large,String status) {
         this.image = image;
         this.name = name;
         this.category = category;
         this.regular = regular;
         this.large = large;
+        this.status = status;
     }
 
     public String getImage() {
@@ -59,4 +62,8 @@ public class ItemModel {
     public void setLarge(String large) {
         this.large = large;
     }
+
+    public String getStatus() {return status;}
+
+    public void setStatus(String status) {this.status = status;}
 }
