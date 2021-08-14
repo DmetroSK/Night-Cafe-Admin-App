@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NightCafe">
         <activity android:name=".fooditems.AddItemsActivity"></activity>
-        <activity android:name=".fooditems.FoodItemsActivity" />
         <activity
             android:name=".authentication.UpdateSuccessActivity"
             android:screenOrientation="portrait" />

@@ -15,6 +15,8 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 import com.nightcafeadmin.app.R;
+import com.nightcafeadmin.app.customers.CustomerModel;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FoodItemAdapter extends FirebaseRecyclerAdapter<ItemModel,FoodItemAdapter.viewHolder> {
@@ -43,22 +45,15 @@ public class FoodItemAdapter extends FirebaseRecyclerAdapter<ItemModel,FoodItemA
         }
     }
 
-    /**
-     * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
-     * {@link FirebaseRecyclerOptions} for configuration options.
-     *
-     * @param options
-     */
-    public FoodItemAdapter(@NonNull FirebaseRecyclerOptions<ItemModel> options) {
-        super(options);
-    }
 
+    public FoodItemAdapter(@NonNull FirebaseRecyclerOptions<ItemModel> options2) {
+        super(options2);
+    }
 
 
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onBindViewHolder(@NonNull FoodItemAdapter.viewHolder holder, int position, ItemModel model) {
-
 
         try {
             holder.name.setText(model.getName());

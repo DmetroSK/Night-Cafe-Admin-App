@@ -1,6 +1,6 @@
 package com.nightcafeadmin.app.fooditems;
 
-public class UploadItem {
+public class UploadItemModel {
 
     public String image;
     public String name;
@@ -9,7 +9,7 @@ public class UploadItem {
     public String large;
     public String status;
 
-    public UploadItem(String url, String name,String category,String regular,String large,String status) {
+    public UploadItemModel(String url, String name, String category, String regular, String large, String status) {
 
         this.image = url;
         this.name = name;

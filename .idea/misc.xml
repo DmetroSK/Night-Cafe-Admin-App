@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/3 rd yera/Sem 1/PH 3037 Mobile Application Development/Final Project/NightCafeAdmin/app/src/main/res/drawable/black_card.xml" value="0.3828125" />
+        <entry key="..\:/3 rd yera/Sem 1/PH 3037 Mobile Application Development/Final Project/NightCafeAdmin/app/src/main/res/drawable/white_card.xml" value="0.20989583333333334" />
+        <entry key="..\:/3 rd yera/Sem 1/PH 3037 Mobile Application Development/Final Project/NightCafeAdmin/app/src/main/res/layout/activity_add_items.xml" value="0.36666666666666664" />
+        <entry key="..\:/3 rd yera/Sem 1/PH 3037 Mobile Application Development/Final Project/NightCafeAdmin/app/src/main/res/layout/activity_food_items.xml" value="0.36666666666666664" />
+        <entry key="..\:/3 rd yera/Sem 1/PH 3037 Mobile Application Development/Final Project/NightCafeAdmin/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/3 rd yera/Sem 1/PH 3037 Mobile Application Development/Final Project/NightCafeAdmin/app/src/main/res/layout/black_card.xml" value="0.36666666666666664" />
+        <entry key="..\:/3 rd yera/Sem 1/PH 3037 Mobile Application Development/Final Project/NightCafeAdmin/app/src/main/res/layout/customer.xml" value="0.2604166666666667" />
+        <entry key="..\:/3 rd yera/Sem 1/PH 3037 Mobile Application Development/Final Project/NightCafeAdmin/app/src/main/res/layout/food_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/3 rd yera/Sem 1/PH 3037 Mobile Application Development/Final Project/NightCafeAdmin/app/src/main/res/layout/fragment_customers.xml" value="0.36666666666666664" />
+        <entry key="..\:/3 rd yera/Sem 1/PH 3037 Mobile Application Development/Final Project/NightCafeAdmin/app/src/main/res/layout/fragment_food.xml" value="0.36666666666666664" />
+        <entry key="..\:/3 rd yera/Sem 1/PH 3037 Mobile Application Development/Final Project/NightCafeAdmin/app/src/main/res/layout/fragment_home.xml" value="0.35260416666666666" />
+        <entry key="..\:/3 rd yera/Sem 1/PH 3037 Mobile Application Development/Final Project/NightCafeAdmin/app/src/main/res/layout/fragment_orders.xml" value="0.2604166666666667" />
+        <entry key="..\:/3 rd yera/Sem 1/PH 3037 Mobile Application Development/Final Project/NightCafeAdmin/app/src/main/res/layout/fragment_profile.xml" value="0.19375" />
+        <entry key="..\:/3 rd yera/Sem 1/PH 3037 Mobile Application Development/Final Project/NightCafeAdmin/app/src/main/res/layout/fragment_settings.xml" value="0.19375" />
+        <entry key="..\:/3 rd yera/Sem 1/PH 3037 Mobile Application Development/Final Project/NightCafeAdmin/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

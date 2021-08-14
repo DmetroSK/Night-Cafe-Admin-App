@@ -1,7 +1,9 @@
 package com.nightcafeadmin.app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.fragment.app.Fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -10,23 +12,20 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.MenuItem;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.nightcafeadmin.app.fooditems.AddItemsActivity;
-import com.nightcafeadmin.app.fooditems.FoodItemAdapter;
-import com.nightcafeadmin.app.fooditems.FoodItemsActivity;
 import com.nightcafeadmin.app.authentication.SignInActivity;
-import com.nightcafeadmin.app.databases.SessionManager;
-
-import java.util.HashMap;
+import com.nightcafeadmin.app.customers.CustomersFragment;
+import com.nightcafeadmin.app.fooditems.FoodFragment;
+import com.nightcafeadmin.app.orders.OrdersFragment;
+import com.nightcafeadmin.app.settings.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
+    BottomNavigationView bottomNavigationView;
     FirebaseAuth mAuth;
 
     @Override
@@ -41,49 +40,39 @@ public class MainActivity extends AppCompatActivity {
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-        Button logout = findViewById(R.id.logout);
-        LinearLayout food_items = findViewById(R.id.food_group);
-        TextView txtname = findViewById(R.id.txtname);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame,new HomeFragment()).commit();
 
-        //session
-        SessionManager sessionManager = new SessionManager(this);
-        HashMap<String,String> userDetails = sessionManager.getUserDetailFromSession();
+        bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_nav);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment temp = null;
 
-        String name = userDetails.get(SessionManager.KEY_NAME);
-
-        txtname.setText("Welcome '" + name+"'");
+                switch (item.getItemId())
+                {
+                    case R.id.menu_home:temp = new HomeFragment();
+                        break;
+                    case R.id.orders_home:temp = new OrdersFragment();
+                        break;
+                    case R.id.foods_home:temp = new FoodFragment();
+                        break;
+                    case R.id.customers_home:temp = new CustomersFragment();
+                        break;
+                    case R.id.settings_home:temp = new SettingsFragment();
+                        break;
+                }
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame,temp).commit();
+                return true;
+            }
+        });
 
         //check internet connection
         if(!isConnected(MainActivity.this)){
             showCustomDialog();
         }
         else {
-
-            logout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent(MainActivity.this, SignInActivity.class));
-                    finish();
-                    sessionManager.logout();
-                }
-            });
-
-
-            food_items.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    startActivity(new Intent(MainActivity.this, FoodItemsActivity.class));
-                    finish();
-                }
-            });
-
-
-
+            return;
         }
-
 
     }
 

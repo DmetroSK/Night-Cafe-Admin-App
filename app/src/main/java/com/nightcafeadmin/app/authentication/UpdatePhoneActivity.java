@@ -20,10 +20,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.nightcafeadmin.app.R;
+import com.nightcafeadmin.app.settings.ProfileFragment;
 
 public class UpdatePhoneActivity extends AppCompatActivity {
     ProgressBar probar;
-    String old_phone,newPhone;
+    String old_phone,newPhone,ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,9 @@ public class UpdatePhoneActivity extends AppCompatActivity {
 
         //get value from changePhoneActivity
         old_phone = getIntent().getStringExtra("_oldPhone");
+
+        //Get reference from each particular activity
+        ref = getIntent().getStringExtra("_Ref");
 
         //done button press
         btn_done.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +71,11 @@ public class UpdatePhoneActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UpdatePhoneActivity.this, ChangedPhoneActivity.class));
+                if (ref.equals("profile")) {
+                    getSupportFragmentManager().beginTransaction().add(android.R.id.content, new ProfileFragment()).commit();
+                } else {
+                    startActivity(new Intent(UpdatePhoneActivity.this, ChangedPhoneActivity.class));
+                }
                 finish();
             }
         });
@@ -87,6 +95,8 @@ public class UpdatePhoneActivity extends AppCompatActivity {
 
         //reference from UpdatePhoneActivity
         intent.putExtra("_Ref", "update_Phone");
+        intent.putExtra("_Ref2", ref);
+
         Toast.makeText(getApplicationContext(), "OTP code Send", Toast.LENGTH_SHORT).show();
 
         startActivity(intent);

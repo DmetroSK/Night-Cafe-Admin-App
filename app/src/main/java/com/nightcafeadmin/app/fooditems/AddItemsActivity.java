@@ -64,7 +64,7 @@ public class AddItemsActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AddItemsActivity.this, FoodItemsActivity.class));
+                getSupportFragmentManager().beginTransaction().add(android.R.id.content, new FoodFragment()).commit();
                 finish();
             }
         });
@@ -146,11 +146,11 @@ public class AddItemsActivity extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Uri> task) {
                                             String imageURL = task.getResult().toString();
                                             String ImageUploadId = databaseReference.push().getKey();
-                                            UploadItem itemInfo = new UploadItem(imageURL,item_name,category_name,regular_price,large_price,"Available");
+                                            UploadItemModel itemInfo = new UploadItemModel(imageURL,item_name,category_name,regular_price,large_price,"Available");
                                             databaseReference.child(ImageUploadId).setValue(itemInfo);
                                             Toast.makeText(getApplicationContext(), "Item Added Successfully ", Toast.LENGTH_LONG).show();
                                             probar.setVisibility(View.GONE);
-                                            startActivity(new Intent(AddItemsActivity.this, FoodItemsActivity.class));
+                                            getSupportFragmentManager().beginTransaction().add(android.R.id.content, new FoodFragment()).commit();
                                             finish();
 
                                         }
