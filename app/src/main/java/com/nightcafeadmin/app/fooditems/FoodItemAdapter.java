@@ -46,8 +46,8 @@ public class FoodItemAdapter extends FirebaseRecyclerAdapter<ItemModel,FoodItemA
     }
 
 
-    public FoodItemAdapter(@NonNull FirebaseRecyclerOptions<ItemModel> options2) {
-        super(options2);
+    public FoodItemAdapter(@NonNull FirebaseRecyclerOptions<ItemModel> options) {
+        super(options);
     }
 
 

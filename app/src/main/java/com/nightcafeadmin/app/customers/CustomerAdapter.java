@@ -1,26 +1,15 @@
 package com.nightcafeadmin.app.customers;
 
 import android.annotation.SuppressLint;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.FirebaseDatabase;
 import com.nightcafeadmin.app.R;
-import com.nightcafeadmin.app.fooditems.FoodItemAdapter;
-import com.nightcafeadmin.app.fooditems.ItemModel;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CustomerAdapter extends FirebaseRecyclerAdapter<CustomerModel, com.nightcafeadmin.app.customers.CustomerAdapter.viewHolder>{
 
@@ -52,7 +41,6 @@ public class CustomerAdapter extends FirebaseRecyclerAdapter<CustomerModel, com.
         }
 
 
-        @SuppressLint("ResourceAsColor")
         @Override
         protected void onBindViewHolder(@NonNull com.nightcafeadmin.app.customers.CustomerAdapter.viewHolder holder, int position, CustomerModel model) {
 

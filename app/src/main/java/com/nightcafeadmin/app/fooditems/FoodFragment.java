@@ -32,13 +32,13 @@ public class FoodFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         //firebase query
-        FirebaseRecyclerOptions<ItemModel> options2 =
+        FirebaseRecyclerOptions<ItemModel> options =
                 new FirebaseRecyclerOptions.Builder<ItemModel>()
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("Items"), ItemModel.class)
                         .build();
 
         //set data adapter
-        foodItemAdapter = new FoodItemAdapter(options2);
+        foodItemAdapter = new FoodItemAdapter(options);
         recyclerView.setAdapter(foodItemAdapter);
 
         return view;
