@@ -59,8 +59,11 @@ public class OrdersAdapter extends FirebaseRecyclerAdapter<OrdersModel, com.nigh
                 holder.btnView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         AppCompatActivity activity = (AppCompatActivity)v.getContext();
                         activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,new OrderDetailsFragment(model.getPhone())).addToBackStack(null).commit();
+
+
 
                     }
                 });
