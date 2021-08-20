@@ -64,9 +64,9 @@ public class FoodItemAdapter extends FirebaseRecyclerAdapter<ItemModel,FoodItemA
 
             Glide.with(holder.image.getContext())
                     .load(model.getImage())
-                    .placeholder(R.drawable.common_google_signin_btn_icon_dark)
+                    .placeholder(R.drawable.ic_main_logo_black)
                     .circleCrop()
-                    .error(R.drawable.common_google_signin_btn_icon_dark_normal)
+                    .error(R.drawable.ic_main_logo_black)
                     .into(holder.image);
 
             int red = Color.parseColor("#A5131F");

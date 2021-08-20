@@ -1,21 +1,15 @@
 package com.nightcafeadmin.app.orders;
 
-import android.annotation.SuppressLint;
-import android.content.res.ColorStateList;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.FirebaseDatabase;
 import com.nightcafeadmin.app.R;
 
 public class OrdersAdapter extends FirebaseRecyclerAdapter<OrdersModel, com.nightcafeadmin.app.orders.OrdersAdapter.viewHolder>{
@@ -29,17 +23,16 @@ public class OrdersAdapter extends FirebaseRecyclerAdapter<OrdersModel, com.nigh
 
         class viewHolder extends RecyclerView.ViewHolder{
 
-            TextView phone;
+            TextView orderNo;
             Button btnView;
 
             public viewHolder(@NonNull View itemView) {
                 super(itemView);
 
-                phone = (TextView)itemView.findViewById(R.id.phone);
+                orderNo = (TextView)itemView.findViewById(R.id.orderNo);
                 btnView = (Button) itemView.findViewById(R.id.btnView);
 
             }
-
 
         }
 
@@ -54,16 +47,14 @@ public class OrdersAdapter extends FirebaseRecyclerAdapter<OrdersModel, com.nigh
 
             try {
 
-                holder.phone.setText(model.getPhone());
+                holder.orderNo.setText(model.getId());
 
                 holder.btnView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
                         AppCompatActivity activity = (AppCompatActivity)v.getContext();
-                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,new OrderDetailsFragment(model.getPhone())).addToBackStack(null).commit();
-
-
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,new OrderDetailsFragment(model.getPhone(), model.getId())).addToBackStack(null).commit();
 
                     }
                 });

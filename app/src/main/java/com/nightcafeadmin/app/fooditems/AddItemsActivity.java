@@ -156,8 +156,6 @@ public class AddItemsActivity extends AppCompatActivity {
                                         }
                                     });
 
-
-
                         }
                     });
         }

@@ -1,16 +1,11 @@
 package com.nightcafeadmin.app.orders;
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,28 +22,26 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.nightcafeadmin.app.HomeFragment;
 import com.nightcafeadmin.app.R;
-import com.nightcafeadmin.app.authentication.UpdatePhoneActivity;
-import com.nightcafeadmin.app.settings.SettingsFragment;
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-
 
 public class OrderDetailsFragment extends Fragment {
 
     OrderDetailsAdapter orderDetailsAdapter;
-    String userPhone;
-     DatabaseReference reference;
+    String userPhone,orderNo,newCancelOrders,newDeliveredOrders,newPendingOrders;
+    DatabaseReference reference;
     RelativeLayout acceptBtnSection,cancelBtnSection,dispatchedBtnSection,completedBtnSection;
-
 
     public OrderDetailsFragment() {
 
     }
 
-    public OrderDetailsFragment(String phone) {
+    public OrderDetailsFragment(String phone, String orderNo) {
         this.userPhone = phone;
+        this.orderNo = orderNo;
             }
 
 
@@ -59,22 +51,22 @@ public class OrderDetailsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_order_details, container, false);
 
-
         //initialize components
         Button btnAccept = (Button) view.findViewById(R.id.btnAccept);
         Button btnCancel = (Button) view.findViewById(R.id.btnCancel);
         Button btnDispatched = (Button) view.findViewById(R.id.btnDispatched);
         Button btnCompleted = (Button) view.findViewById(R.id.btnCompleted);
         ImageView back = view.findViewById(R.id.arrow);
-         acceptBtnSection = (RelativeLayout) view.findViewById(R.id.thirdSection);
-         cancelBtnSection = (RelativeLayout) view.findViewById(R.id.fourthSection);
-         dispatchedBtnSection = (RelativeLayout) view.findViewById(R.id.fifthSection);
-         completedBtnSection = (RelativeLayout) view.findViewById(R.id.sixthSection);
-
+        acceptBtnSection = (RelativeLayout) view.findViewById(R.id.thirdSection);
+        cancelBtnSection = (RelativeLayout) view.findViewById(R.id.fourthSection);
+        dispatchedBtnSection = (RelativeLayout) view.findViewById(R.id.fifthSection);
+        completedBtnSection = (RelativeLayout) view.findViewById(R.id.sixthSection);
+        TextView total = (TextView) view.findViewById(R.id.txtTotal);
+        TextView street = (TextView) view.findViewById(R.id.street);
+        TextView city = (TextView) view.findViewById(R.id.city);
 
         //database query
         reference = FirebaseDatabase.getInstance().getReference("Orders").child(userPhone);
-
 
             FirebaseRecyclerOptions<OrderDetailsModel> options =
                     new FirebaseRecyclerOptions.Builder<OrderDetailsModel>()
@@ -90,6 +82,7 @@ public class OrderDetailsFragment extends Fragment {
             recyclerView.setAdapter(orderDetailsAdapter);
 
 
+
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -99,7 +92,9 @@ public class OrderDetailsFragment extends Fragment {
                 {
                     //Set Values from database
                     String orderStatus = dataSnapshot.child("status").getValue(String.class);
+                    String totalPrice = dataSnapshot.child("total").getValue(String.class);
 
+                    total.setText("Rs. " + totalPrice);
                     checkStatus(orderStatus);
                 }
                 else {
@@ -108,9 +103,6 @@ public class OrderDetailsFragment extends Fragment {
                     dispatchedBtnSection.setVisibility(View.GONE);
                     completedBtnSection.setVisibility(View.GONE);
                 }
-
-
-
 
             }
 
@@ -121,6 +113,35 @@ public class OrderDetailsFragment extends Fragment {
         };
 
         reference.addValueEventListener(valueEventListener);
+
+        ValueEventListener valueEventListener2 = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+                if(dataSnapshot.getValue() != null)
+                {
+                    //Set Values from database
+                    String userStreet = dataSnapshot.child("street").getValue(String.class);
+                    String userCity = dataSnapshot.child("city").getValue(String.class);
+
+                    street.setText(userStreet);
+                    city.setText(userCity);
+
+                }
+                else {
+                   return;
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getContext(),"Database Error" , Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        FirebaseDatabase.getInstance().getReference("Users").child(userPhone).addValueEventListener(valueEventListener2);
 
         //Back button click
         back.setOnClickListener(new View.OnClickListener() {
@@ -151,6 +172,96 @@ public class OrderDetailsFragment extends Fragment {
             public void onClick(View v) {
                 reference.child("status").setValue("cancelled");
                 cancelBtnSection.setVisibility(View.GONE);
+                acceptBtnSection.setVisibility(View.GONE);
+
+                String timeStamp = new SimpleDateFormat("yyyyMMddHHmm").format(new Date());
+
+                Handler h4 = new Handler();
+                h4.postDelayed(new Runnable(){
+                    @Override
+                    public void run() {
+
+                        ValueEventListener valueEventListener = new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                String cancel  = dataSnapshot.child("cancelled").getValue(String.class);
+                                int cancelOrders = Integer.parseInt(cancel);
+                                newCancelOrders = String.valueOf(cancelOrders+1);
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        };
+
+                        FirebaseDatabase.getInstance().getReference("OrderCount").addValueEventListener(valueEventListener);
+
+                    }
+                },3000);
+
+                Handler h5 = new Handler();
+                h5.postDelayed(new Runnable(){
+                    @Override
+                    public void run() {
+
+                        ValueEventListener valueEventListener = new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                String pending  = dataSnapshot.child("pending").getValue(String.class);
+                                int pendingOrders = Integer.parseInt(pending);
+                                newPendingOrders = String.valueOf(pendingOrders-1);
+
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        };
+
+                        FirebaseDatabase.getInstance().getReference("OrderCount").addListenerForSingleValueEvent(valueEventListener);
+
+                    }
+                },3000);
+
+
+                Handler h6 = new Handler();
+                h6.postDelayed(new Runnable(){
+                    @Override
+                    public void run() {
+
+                        FirebaseDatabase.getInstance().getReference("OrderCount").child("cancelled").setValue(newCancelOrders);
+                        FirebaseDatabase.getInstance().getReference("OrderCount").child("pending").setValue(newPendingOrders);
+
+
+                        reference.child("Order").get().addOnSuccessListener(dataSnapshot -> {
+                            FirebaseDatabase.getInstance().getReference("History").child(userPhone).child(timeStamp).setValue(dataSnapshot.getValue());
+                            reference.removeValue();
+                        });
+
+                        FirebaseDatabase.getInstance().getReference("History").child(userPhone).child(timeStamp).child("status").setValue("cancelled");
+
+                    }
+                },4000);
+
+                Handler h7 = new Handler();
+                h7.postDelayed(new Runnable(){
+                    @Override
+                    public void run() {
+
+                        FirebaseDatabase.getInstance().getReference("History").child(userPhone).child(timeStamp).child("status").setValue("cancelled");
+
+                    }
+                },4000);
+
+
+                //Home fragment open
+                AppCompatActivity activity = (AppCompatActivity)view.getContext();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,new HomeFragment()).addToBackStack(null).commit();
+
             }
         });
 
@@ -171,35 +282,84 @@ public class OrderDetailsFragment extends Fragment {
             public void onClick(View v) {
                 reference.child("status").setValue("completed");
 
-                //Home fragment open
-                AppCompatActivity activity = (AppCompatActivity)view.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,new HomeFragment()).addToBackStack(null).commit();
-
-                Handler h = new Handler();
-                h.postDelayed(new Runnable(){
+                Handler h1 = new Handler();
+                h1.postDelayed(new Runnable(){
                     @Override
                     public void run() {
 
+                        ValueEventListener valueEventListener = new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
 
+                                String delivered  = dataSnapshot.child("delivered").getValue(String.class);
+                                int deliverOrders = Integer.parseInt(delivered);
+                                newDeliveredOrders = String.valueOf(deliverOrders+1);
+
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+
+                            }
+                        };
+
+                        FirebaseDatabase.getInstance().getReference("OrderCount").addListenerForSingleValueEvent(valueEventListener);
+
+                    }
+                },1000);
+
+                Handler h2 = new Handler();
+                h2.postDelayed(new Runnable(){
+                    @Override
+                    public void run() {
+
+                        ValueEventListener valueEventListener = new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                String pending  = dataSnapshot.child("pending").getValue(String.class);
+                                int pendingOrders = Integer.parseInt(pending);
+                                newPendingOrders = String.valueOf(pendingOrders-1);
+
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        };
+
+                        FirebaseDatabase.getInstance().getReference("OrderCount").addListenerForSingleValueEvent(valueEventListener);
+
+                    }
+                },1000);
+
+                Handler h3 = new Handler();
+                h3.postDelayed(new Runnable(){
+                    @Override
+                    public void run() {
 
                         String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
 
+                        FirebaseDatabase.getInstance().getReference("OrderCount").child("delivered").setValue(newDeliveredOrders);
+                        FirebaseDatabase.getInstance().getReference("OrderCount").child("pending").setValue(newPendingOrders);
 
                         reference.child("Order").get().addOnSuccessListener(dataSnapshot -> {
                             FirebaseDatabase.getInstance().getReference("History").child(userPhone).child(timeStamp).setValue(dataSnapshot.getValue());
                             reference.removeValue();
                         });
 
+                        FirebaseDatabase.getInstance().getReference("History").child(userPhone).child(timeStamp).child("status").setValue("completed");
 
-
+                        //Home fragment open
+                        AppCompatActivity activity = (AppCompatActivity)view.getContext();
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,new HomeFragment()).addToBackStack(null).commit();
                     }
-                },2000);
-
-
+                },3000);
 
             }
         });
-
 
         return view;
     }
@@ -222,7 +382,7 @@ public class OrderDetailsFragment extends Fragment {
         }
        else if(orderStatus.equals("cancelled"))
         {
-            acceptBtnSection.setVisibility(View.VISIBLE);
+            acceptBtnSection.setVisibility(View.GONE);
             cancelBtnSection.setVisibility(View.GONE);
             dispatchedBtnSection.setVisibility(View.GONE);
             completedBtnSection.setVisibility(View.GONE);

@@ -15,12 +15,24 @@
         android:padding="15dp">
 
         <TextView
-            android:id="@+id/phone"
+            android:id="@+id/orderNoLbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:text="Phone Number"
+            android:text="Order No :"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/orderNo"
+            android:layout_toEndOf="@id/orderNoLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="##"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold" />

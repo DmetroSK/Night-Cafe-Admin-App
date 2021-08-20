@@ -1,31 +1,21 @@
 package com.nightcafeadmin.app.orders;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.nightcafeadmin.app.R;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class OrderDetailsAdapter extends FirebaseRecyclerAdapter<OrderDetailsModel, OrderDetailsAdapter.viewHolder>{
 
-
-
-    @NonNull
+        @NonNull
         @Override
         public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
@@ -38,7 +28,6 @@ public class OrderDetailsAdapter extends FirebaseRecyclerAdapter<OrderDetailsMod
             CircleImageView image;
             TextView name,type,qty,price;
             LinearLayout hide;
-
 
             public viewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -72,9 +61,9 @@ public class OrderDetailsAdapter extends FirebaseRecyclerAdapter<OrderDetailsMod
 
                 Glide.with(holder.image.getContext())
                         .load(model.getImage())
-                        .placeholder(R.drawable.common_google_signin_btn_icon_dark)
+                        .placeholder(R.drawable.ic_main_logo_black)
                         .circleCrop()
-                        .error(R.drawable.common_google_signin_btn_icon_dark_normal)
+                        .error(R.drawable.ic_main_logo_black)
                         .into(holder.image);
 
 
